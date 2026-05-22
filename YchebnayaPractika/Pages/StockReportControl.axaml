@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+             x:Class="YchebnayaPractika.Pages.StockReportControl">
+    <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto">
+        <TextBlock Text="Отчет по материалам и комплектующим"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <TextBlock Text="Показать:" VerticalAlignment="Center"/>
+            <ComboBox Name="KindComboBox" Width="180"/>
+            <TextBlock Text="Тип:" VerticalAlignment="Center"/>
+            <ComboBox Name="TypeComboBox" Width="200"/>
+            <Button Content="Обновить" MinWidth="110" Click="RefreshClick"/>
+            <Button Content="Печать" MinWidth="110" Click="PrintClick"/>
+        </StackPanel>
+
+        <Border Grid.Row="2" Classes="form-card" Padding="12" Margin="0,12,0,0">
+            <ScrollViewer>
+                <StackPanel Spacing="8">
+                    <ListBox Name="ReportListBox" MinHeight="400"/>
+                    <TextBlock Name="TotalTextBlock" FontWeight="Bold"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

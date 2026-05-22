@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="650"
+             x:Class="YchebnayaPractika.Pages.EmployeesControl">
+    <Grid Margin="20" ColumnDefinitions="2*,1*" RowDefinitions="Auto,Auto,*,Auto">
+        <TextBlock Grid.ColumnSpan="2"
+                   Text="Учет работников"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="0,12,0,0"
+                   Text="Работники (Мастер/Конструктор) + данные из пункта 1.5"
+                   FontSize="14"/>
+
+        <Border Grid.Row="2" Grid.Column="0" Classes="form-card" Padding="12" Margin="0,12,10,0">
+            <StackPanel Spacing="8">
+                <ListBox Name="EmployeesListBox" Height="430" SelectionChanged="EmployeeSelectionChanged"/>
+                <TextBlock Name="StatsTextBlock"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" Classes="form-card" Padding="12" Margin="0,12,0,0">
+            <StackPanel Spacing="8">
+                <TextBlock Text="ФИО"/>
+                <TextBox Name="FullNameTextBox"/>
+                <TextBlock Text="Логин"/>
+                <TextBox Name="LoginTextBox"/>
+                <TextBlock Text="Пароль"/>
+                <TextBox Name="PasswordTextBox" PasswordChar="*"/>
+                <TextBlock Text="Роль"/>
+                <ComboBox Name="RoleComboBox"/>
+                <TextBlock Text="Дата рождения (дд.мм.гггг)"/>
+                <TextBox Name="BirthDateTextBox"/>
+                <TextBlock Text="Домашний адрес"/>
+                <TextBox Name="HomeAddressTextBox"/>
+                <TextBlock Text="Образование"/>
+                <TextBox Name="EducationTextBox"/>
+                <TextBlock Text="Квалификация"/>
+                <TextBox Name="QualificationTextBox"/>
+                <TextBlock Text="Операции (через запятую)"/>
+                <TextBox Name="OperationsTextBox"
+                         MinHeight="36"
+                         TextWrapping="Wrap"
+                         Background="{StaticResource TextWhiteBrush}"
+                         Foreground="{StaticResource TextBlackBrush}"/>
+
+                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                    <Button Content="Добавить" Width="110" Click="AddClick"/>
+                    <Button Content="Изменить" Width="110" Click="UpdateClick"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" Width="120" Click="BackClick"/>
+            <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

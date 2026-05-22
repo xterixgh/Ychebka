@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
+             x:Class="YchebnayaPractika.Pages.PrintReportControl">
+    <Grid Margin="20" RowDefinitions="Auto,*,Auto">
+        <TextBlock Name="TitleTextBlock"
+                   Text="Отчет"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <Border Grid.Row="1" Classes="form-card" Padding="12" Margin="0,12,0,0">
+            <ScrollViewer>
+                <TextBox Name="ReportTextBox" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Сохранить в файл" MinWidth="140" Click="SaveClick"/>
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

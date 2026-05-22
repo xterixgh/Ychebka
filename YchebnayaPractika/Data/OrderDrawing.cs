@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace YchebnayaPractika.Data;
+
+public partial class OrderDrawing
+{
+    public int IdOrderDrawing { get; set; }
+
+    public int IdOrder { get; set; }
+
+    public string FileName { get; set; } = null!;
+
+    public byte[] FileData { get; set; } = null!;
+
+    public virtual Order IdOrderNavigation { get; set; } = null!;
+}

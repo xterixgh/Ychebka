@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="750"
+             x:Class="YchebnayaPractika.Pages.OrdersControl">
+    <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto,Auto" ColumnDefinitions="3*,2*">
+        <TextBlock Grid.ColumnSpan="2"
+                   Text="Список заказов"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <TextBlock Text="Фильтр:" VerticalAlignment="Center"/>
+            <ComboBox Name="FilterComboBox" Width="220" SelectionChanged="FilterChanged"/>
+            <Button Name="AddOrderButton" Content="Добавить заказ" MinWidth="150" Click="AddOrderClick"/>
+            <Button Name="RefreshButton" Content="Обновить" MinWidth="110" Click="RefreshClick"/>
+        </StackPanel>
+
+        <Border Grid.Row="2" Grid.Column="0" Classes="form-card" Padding="12" Margin="0,12,10,0">
+            <StackPanel Spacing="8">
+                <ListBox Name="OrdersListBox" SelectionChanged="OrderSelectionChanged"/>
+                <TextBlock Name="StatsTextBlock"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" Classes="form-card" Padding="12" Margin="0,12,0,0">
+            <ScrollViewer>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Детали заказа" FontWeight="Bold"/>
+                    <TextBlock Name="DetailNumberTextBlock"/>
+                    <TextBlock Name="DetailDateTextBlock"/>
+                    <TextBlock Name="DetailNameTextBlock"/>
+                    <TextBlock Name="DetailStatusTextBlock"/>
+                    <TextBlock Name="DetailCostTextBlock"/>
+                    <TextBlock Name="DetailCustomerTextBlock"/>
+                    <TextBlock Name="DetailManagerTextBlock"/>
+                    <TextBlock Name="DetailPlannedTextBlock"/>
+                    <TextBlock Name="DetailProductTextBlock"/>
+                    <TextBlock Name="DetailDescriptionTextBlock" TextWrapping="Wrap"/>
+
+                    <TextBlock Text="Причина отклонения" Margin="0,8,0,0"/>
+                    <TextBox Name="RejectReasonTextBox" AcceptsReturn="True" Height="50" TextWrapping="Wrap"/>
+
+                    <TextBlock Text="Стоимость (конструктор)" Margin="0,8,0,0"/>
+                    <TextBox Name="OrderCostTextBox"/>
+                    <TextBlock Text="Плановая дата (дд.мм.гггг)"/>
+                    <TextBox Name="PlannedDateTextBox"/>
+
+                    <TextBlock Text="История статусов" FontWeight="Bold" Margin="0,12,0,0"/>
+                    <ListBox Name="HistoryListBox" Height="120"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Classes="form-card" Padding="12" Margin="0,10,0,0">
+            <WrapPanel Orientation="Horizontal">
+                <Button Name="AcceptButton" Content="Принять" MinWidth="120" Margin="0,0,8,8" Click="AcceptClick"/>
+                <Button Name="RejectButton" Content="Отклонить" MinWidth="120" Margin="0,0,8,8" Click="RejectClick"/>
+                <Button Name="ToPurchaseButton" Content="В закупку" MinWidth="120" Margin="0,0,8,8" Click="ToPurchaseClick"/>
+                <Button Name="ToProductionButton" Content="В производство" MinWidth="160" Margin="0,0,8,8" Click="ToProductionClick"/>
+                <Button Name="ToConfirmButton" Content="На подтверждение" MinWidth="170" Margin="0,0,8,8" Click="ToConfirmClick"/>
+                <Button Name="ToControlButton" Content="На контроль" MinWidth="130" Margin="0,0,8,8" Click="ToControlClick"/>
+                <Button Name="ToReadyButton" Content="Готов" MinWidth="100" Margin="0,0,8,8" Click="ToReadyClick"/>
+                <Button Name="ToClosedButton" Content="Закрыть" MinWidth="100" Margin="0,0,8,8" Click="ToClosedClick"/>
+                <Button Name="CancelOrderButton" Content="Отменить" MinWidth="110" Margin="0,0,8,8" Click="CancelOrderClick"/>
+                <Button Name="DeleteOrderButton" Content="Удалить" MinWidth="110" Margin="0,0,8,8" Click="DeleteOrderClick"/>
+                <Button Name="EditOrderButton" Content="Редактировать" MinWidth="130" Margin="0,0,8,8" Click="EditOrderClick"/>
+                <Button Name="QualityButton" Content="Контроль качества" MinWidth="160" Margin="0,0,8,8" Click="QualityClick"/>
+                <Button Name="PlanOrderButton" Content="Расчет заказа" MinWidth="150" Margin="0,0,8,8" Click="PlanOrderClick"/>
+            </WrapPanel>
+        </Border>
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+            <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

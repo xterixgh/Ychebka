@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+             x:Class="YchebnayaPractika.Pages.WorkshopPlanningControl">
+    <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto">
+        <TextBlock Text="Планировка цехов"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <TextBlock Text="Цех:" VerticalAlignment="Center"/>
+            <ComboBox Name="WorkshopComboBox" Width="280" SelectionChanged="WorkshopSelectionChanged"/>
+            <Button Content="Увеличить" MinWidth="110" Click="ZoomInClick"/>
+            <Button Content="Уменьшить" MinWidth="110" Click="ZoomOutClick"/>
+            <Button Content="Сохранить" MinWidth="110" Click="SaveClick"/>
+            <Button Content="Отменить" MinWidth="110" Click="CancelClick"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Margin="0,12,0,0" ColumnDefinitions="180,*">
+            <Border Grid.Column="0" Classes="form-card" Padding="12" Margin="0,0,10,0">
+                <StackPanel Spacing="10" MinWidth="156">
+                    <TextBlock Text="Значки" FontWeight="Bold"/>
+                    <TextBlock Text="Перетащите на схему" FontSize="12" TextWrapping="Wrap"/>
+
+                    <Border Name="ToolEquipment" Tag="Equipment" Classes="tool-icon" PointerPressed="ToolbarPointerPressed" HorizontalAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Center" Spacing="4">
+                            <Image Name="ToolEquipmentImage" Width="48" Height="48"/>
+                            <TextBlock Text="Оборуд." FontSize="11" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Name="ToolExit" Tag="Exit" Classes="tool-icon" PointerPressed="ToolbarPointerPressed" HorizontalAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Center" Spacing="4">
+                            <Image Name="ToolExitImage" Width="48" Height="48"/>
+                            <TextBlock Text="Выход" FontSize="11" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Name="ToolFireExtinguisher" Tag="FireExtinguisher" Classes="tool-icon" PointerPressed="ToolbarPointerPressed" HorizontalAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Center" Spacing="4">
+                            <Image Name="ToolFireImage" Width="48" Height="48"/>
+                            <TextBlock Text="Огнетуш." FontSize="11" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Name="ToolFirstAid" Tag="FirstAid" Classes="tool-icon" PointerPressed="ToolbarPointerPressed" HorizontalAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Center" Spacing="4">
+                            <Image Name="ToolFirstAidImage" Width="48" Height="48"/>
+                            <TextBlock Text="Аптечка" FontSize="11" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Button Content="Удалить значок"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Margin="0,4,0,0"
+                            Click="DeleteSelectedClick"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Classes="form-card" Padding="8">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Grid Name="ZoomGrid" RenderTransformOrigin="0,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Grid.RenderTransform>
+                        <Canvas Name="PlanCanvas"
+                                Background="White"
+                                PointerMoved="PlanCanvasPointerMoved"
+                                PointerReleased="PlanCanvasPointerReleased">
+                            <Image Name="PlanBackgroundImage" IsHitTestVisible="False"/>
+                        </Canvas>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+            <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

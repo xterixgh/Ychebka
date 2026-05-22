@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="YchebnayaPractika.Pages.LoginControl">
+    <Grid>
+        <Border Classes="form-card"
+                Padding="24"
+                Width="420"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Авторизация"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,6"
+                           Foreground="{DynamicResource BrandBlueBrush}"/>
+
+                <TextBlock Text="Логин"/>
+                <TextBox Name="LoginTextBox" Watermark="Введите логин"/>
+
+                <TextBlock Text="Пароль"/>
+                <TextBox Name="PasswordTextBox" PasswordChar="*" Watermark="Введите пароль"/>
+
+                <CheckBox Name="RememberMeCheckBox" Content="Запомнить меня" Margin="0,4,0,6"/>
+
+                <UniformGrid Columns="3" Rows="1">
+                    <Button Content="Войти" Click="LoginButtonClick" Margin="0,0,6,0"/>
+                    <Button Content="Выход" Click="ExitAppClick" Margin="3,0,3,0"/>
+                    <Button Content="Регистрация" Click="RegisterButtonClick" Margin="6,0,0,0"/>
+                </UniformGrid>
+
+                <TextBlock x:Name="MessageTextBlock"
+                           Margin="0,8,0,0"
+                           Foreground="{DynamicResource BrandRedBrush}"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

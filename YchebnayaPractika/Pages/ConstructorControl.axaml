@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
+             x:Class="YchebnayaPractika.Pages.ConstructorControl">
+    <Grid Margin="20">
+        <Border Classes="form-card"
+                Padding="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MaxWidth="760">
+            <StackPanel Spacing="12" MinWidth="680">
+                <TextBlock Text="Экран конструктора" FontSize="26" FontWeight="Bold" Foreground="{DynamicResource BrandBlueBrush}"/>
+                <TextBlock Text="Здесь будет работа со спецификациями и данными по изделиям."
+                           FontSize="14"
+                           TextWrapping="Wrap"/>
+                <WrapPanel Orientation="Horizontal">
+                    <Button Content="Заказы" MinWidth="200" Margin="0,0,10,10" Click="OpenOrdersClick"/>
+                    <Button Content="Материалы (просмотр)" MinWidth="200" Margin="0,0,10,10" Click="OpenMaterialsClick"/>
+                    <Button Content="Комплектующие (просмотр)" MinWidth="200" Margin="0,0,10,10" Click="OpenComponentsClick"/>
+                    <Button Content="Выход из сессии" MinWidth="200" Margin="0,0,10,10" Click="LogoutClick"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

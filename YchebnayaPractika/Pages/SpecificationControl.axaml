@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="750"
+             x:Class="YchebnayaPractika.Pages.SpecificationControl">
+    <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto">
+        <TextBlock Name="TitleTextBlock"
+                   Text="Спецификация изделия"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <TextBlock Text="Раздел:" VerticalAlignment="Center"/>
+            <ComboBox Name="SectionComboBox" Width="220" SelectionChanged="SectionChanged"/>
+            <Button Content="Печать" MinWidth="100" Click="PrintClick"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Margin="0,12,0,0" ColumnDefinitions="2*,1*">
+            <Border Grid.Column="0" Classes="form-card" Padding="12" Margin="0,0,10,0">
+                <ListBox Name="ItemsListBox" SelectionChanged="ItemSelectionChanged"/>
+            </Border>
+
+            <Border Grid.Column="1" Classes="form-card" Padding="12">
+                <ScrollViewer>
+                    <StackPanel Spacing="6" Name="InputPanel">
+                        <TextBlock Name="Field1Label" Text="Поле 1"/>
+                        <TextBox Name="Field1TextBox"/>
+                        <TextBlock Name="Field2Label" Text="Поле 2"/>
+                        <TextBox Name="Field2TextBox"/>
+                        <TextBlock Name="Field3Label" Text="Поле 3"/>
+                        <TextBox Name="Field3TextBox"/>
+                        <TextBlock Name="Field4Label" Text="Поле 4"/>
+                        <ComboBox Name="Field4ComboBox"/>
+                        <TextBlock Name="Field5Label" Text="Поле 5"/>
+                        <TextBox Name="Field5TextBox" AcceptsReturn="True" Height="60" TextWrapping="Wrap"/>
+
+                        <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                            <Button Content="Добавить" MinWidth="100" Click="AddClick"/>
+                            <Button Content="Удалить" MinWidth="100" Click="DeleteClick"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+            <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="650"
+             x:Class="YchebnayaPractika.Pages.QualityControlControl">
+    <Grid Margin="20" ColumnDefinitions="2*,1*">
+        <Border Grid.Column="0" Classes="form-card" Padding="12" Margin="0,0,10,0">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Контроль качества" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource BrandBlueBrush}"/>
+                <ListBox Name="ChecksListBox" Height="420" SelectionChanged="CheckSelectionChanged"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Classes="form-card" Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Параметр"/>
+                <TextBox Name="ParameterTextBox"/>
+                <TextBlock Text="Оценка (+ или -)"/>
+                <TextBox Name="GradeTextBox"/>
+                <TextBlock Text="Комментарий"/>
+                <TextBox Name="CommentTextBox" AcceptsReturn="True" Height="70" TextWrapping="Wrap"/>
+
+                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                    <Button Content="Добавить" Width="110" Click="AddClick"/>
+                    <Button Content="Изменить" Width="110" Click="UpdateClick"/>
+                </StackPanel>
+
+                <Button Content="Назад к заказам" Width="160" Margin="0,8,0,0" Click="BackClick"/>
+                <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

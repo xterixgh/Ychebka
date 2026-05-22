@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+             x:Class="YchebnayaPractika.Pages.OrderPlanningControl">
+    <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto,Auto">
+        <TextBlock Name="TitleTextBlock"
+                   Text="Расчет заказа"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource BrandBlueBrush}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Обновить" MinWidth="110" Click="RefreshClick"/>
+            <Button Content="Печать" MinWidth="110" Click="PrintClick"/>
+        </StackPanel>
+
+        <Border Grid.Row="2" Classes="form-card" Padding="12" Margin="0,12,0,0">
+            <ScrollViewer>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Материалы и комплектующие" FontWeight="Bold"/>
+                    <ListBox Name="NeedsListBox" Height="180"/>
+
+                    <TextBlock Name="CostTextBlock"/>
+                    <TextBlock Name="DeliveryTextBlock"/>
+                    <TextBlock Name="ProductionTextBlock"/>
+                    <TextBlock Name="TotalTextBlock" FontWeight="Bold"/>
+
+                    <TextBlock Text="Диаграмма Ганта" FontWeight="Bold" Margin="0,12,0,0"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="220">
+                        <Canvas Name="GanttCanvas" Background="White"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="10" Margin="0,12,0,0">
+            <Button Content="Назад" MinWidth="120" Click="BackClick"/>
+            <TextBlock Name="MessageTextBlock" Foreground="{DynamicResource BrandRedBrush}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
