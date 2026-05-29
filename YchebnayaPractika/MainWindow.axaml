@@ -3,6 +3,7 @@
         x:Class="YchebnayaPractika.MainWindow"
         Title="YchebnayaPractika"
         Width="900" Height="600"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="C:\Users\xteri\RiderProjects\YchebnayaPractika\YchebnayaPractika\Images\icon.png">
     <ContentControl x:Name="MainControl"/>
 </Window>

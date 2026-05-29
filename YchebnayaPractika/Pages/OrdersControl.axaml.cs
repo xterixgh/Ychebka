@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using YchebnayaPractika.Data;
+using YchebnayaPractika.Services;
 
 namespace YchebnayaPractika.Pages;
 
@@ -128,6 +129,25 @@ public partial class OrdersControl : UserControl
         EditOrderButton.IsVisible = false;
         QualityButton.IsVisible = false;
         PlanOrderButton.IsVisible = false;
+        UpdateActionsPanelVisibility();
+    }
+
+    private void UpdateActionsPanelVisibility()
+    {
+        ActionsBorder.IsVisible =
+            AcceptButton.IsVisible ||
+            RejectButton.IsVisible ||
+            ToPurchaseButton.IsVisible ||
+            ToProductionButton.IsVisible ||
+            ToConfirmButton.IsVisible ||
+            ToControlButton.IsVisible ||
+            ToReadyButton.IsVisible ||
+            ToClosedButton.IsVisible ||
+            CancelOrderButton.IsVisible ||
+            DeleteOrderButton.IsVisible ||
+            EditOrderButton.IsVisible ||
+            QualityButton.IsVisible ||
+            PlanOrderButton.IsVisible;
     }
 
     private async void OrderSelectionChanged(object? sender, SelectionChangedEventArgs e)
@@ -216,18 +236,12 @@ public partial class OrdersControl : UserControl
 
         if (role == "Заказчик" && order.IdCustomerUser == userId)
         {
-            if (order.Status == "Новый")
-            {
+            if (CustomerOrderPermissions.CanDelete(order.Status))
                 DeleteOrderButton.IsVisible = true;
+            if (CustomerOrderPermissions.CanEdit(order.Status))
                 EditOrderButton.IsVisible = true;
-            }
-
-            if (order.Status == "Новый" ||
-                order.Status == "Составление спецификации" ||
-                order.Status == "Подтверждение")
-            {
+            if (CustomerOrderPermissions.CanCancel(order.Status))
                 CancelOrderButton.IsVisible = true;
-            }
         }
 
         if (role == "Менеджер" && order.IdManagerUser == userId)
@@ -235,6 +249,8 @@ public partial class OrdersControl : UserControl
             if (order.Status != "Новый" && order.Status != "Отменен" && order.Status != "Отклонен")
                 PlanOrderButton.IsVisible = true;
         }
+
+        UpdateActionsPanelVisibility();
     }
 
     private async Task ChangeStatus(Order order, string newStatus, string? rejectReason)

@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Microsoft.EntityFrameworkCore;
 using YchebnayaPractika.Data;
+using YchebnayaPractika.Services;
 
 namespace YchebnayaPractika.Pages;
 
@@ -36,32 +37,10 @@ public partial class RegisterControl : UserControl
             return;
         }
 
-        if (password.Length < 4 || password.Length > 16)
+        var passwordCheck = PasswordValidator.Validate(password);
+        if (!passwordCheck.IsValid)
         {
-            MessageTextBlock.Text = "Пароль должен быть от 4 до 16 символов.";
-            return;
-        }
-
-        if (password.Contains("*") || password.Contains("&") || password.Contains("{") ||
-            password.Contains("}") || password.Contains("|") || password.Contains("+"))
-        {
-            MessageTextBlock.Text = "Пароль содержит запрещенные символы: * & { } | +";
-            return;
-        }
-
-        bool hasUpper = false;
-        bool hasDigit = false;
-        foreach (char c in password)
-        {
-            if (char.IsUpper(c))
-                hasUpper = true;
-            if (char.IsDigit(c))
-                hasDigit = true;
-        }
-
-        if (!hasUpper || !hasDigit)
-        {
-            MessageTextBlock.Text = "Пароль должен содержать заглавную букву и цифру.";
+            MessageTextBlock.Text = passwordCheck.ErrorMessage;
             return;
         }
 

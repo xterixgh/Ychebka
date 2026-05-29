@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using YchebnayaPractika.Data;
+using YchebnayaPractika.Services;
 
 namespace YchebnayaPractika.Pages;
 
@@ -503,31 +504,11 @@ public partial class CreateOrderControl : UserControl
 
     private async Task<string> GenerateOrderNumber(UserAccount customer, DateOnly orderDate)
     {
-        var fullName = customer.FullName ?? "";
-        var parts = fullName.Split(' ');
-        var lastName = parts.Length > 0 ? parts[0] : "";
-        var firstName = parts.Length > 1 ? parts[1] : "";
-
-        var f = "_";
-        if (lastName.Length > 0)
-            f = lastName.Substring(0, 1).ToUpper();
-
-        var i = "_";
-        if (firstName.Length > 0)
-            i = firstName.Substring(0, 1).ToUpper();
-
         var count = await App.DbContext.Orders.CountAsync(o =>
             o.IdCustomerUser == customer.IdUserAccount &&
             o.OrderDate == orderDate);
 
-        var seq = count + 1;
-        if (seq > 99)
-            seq = 1;
-
-        var seqText = seq.ToString("00", CultureInfo.InvariantCulture);
-        var dateText = orderDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
-
-        return f + i + dateText + seqText;
+        return OrderNumberBuilder.Build(customer.FullName, orderDate, count);
     }
 
     private void BackClick(object? sender, RoutedEventArgs e)

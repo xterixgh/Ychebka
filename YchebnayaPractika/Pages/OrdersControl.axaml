@@ -54,7 +54,7 @@
             </ScrollViewer>
         </Border>
 
-        <Border Grid.Row="3" Grid.ColumnSpan="2" Classes="form-card" Padding="12" Margin="0,10,0,0">
+        <Border x:Name="ActionsBorder" Grid.Row="3" Grid.ColumnSpan="2" Classes="form-card" Padding="12" Margin="0,10,0,0">
             <WrapPanel Orientation="Horizontal">
                 <Button Name="AcceptButton" Content="Принять" MinWidth="120" Margin="0,0,8,8" Click="AcceptClick"/>
                 <Button Name="RejectButton" Content="Отклонить" MinWidth="120" Margin="0,0,8,8" Click="RejectClick"/>
